@@ -12,7 +12,6 @@
         :'<,'>s/\(http.*\)/"\1\.*",/ | w | !black %
         :'<,'>sort u
 """
-import re
 import sys
 
 def main(lines: list) -> list:
@@ -23,35 +22,35 @@ def main(lines: list) -> list:
     class_b: list = []
     class_c: list = []
     class_a_list: list = [
-        "https://developer.mozilla.org/.*",
-        "https://doc.rust-jp.rs/.*",
-        "https://docs.oracle.com/en/java/.*",
-        "https://docs.python.org/ja/.*",
-        "https://github.com/Microsoft/TypeScript-Handbook.*",
-        "https://ja.reactjs.org/.*",
-        "https://ja.reactjs.org/docs/getting-started.html.*",
-        "https://nextjs-ja-translation-docs.vercel.app/.*",
-        "https://nextjs.org/.*",
-        "https://pptr.dev/.*",
-        "https://www.typescriptlang.org/docs/.*",
+        "https://developer.mozilla.org/",
+        "https://doc.rust-jp.rs/",
+        "https://docs.oracle.com/en/java/",
+        "https://docs.python.org/ja/",
+        "https://github.com/Microsoft/TypeScript-Handbook",
+        "https://ja.reactjs.org/",
+        "https://ja.reactjs.org/docs/getting-started.html",
+        "https://nextjs-ja-translation-docs.vercel.app/",
+        "https://nextjs.org/",
+        "https://pptr.dev/",
+        "https://www.typescriptlang.org/docs/",
     ]
     class_b_list: list = [
-        "https://e-words.jp/.*",
-        "https://github.com/.*",
-        "https://it-trend.jp/words/.*",
-        "https://ja.stackoverflow.com/.*",
-        "https://jp.quora.com/.*",
-        "https://js.studio-kingdom.com/typescript/handbook/.*",
-        "https://pandoc-doc-ja.readthedocs.io/.*",
-        "https://qiita.com/.*",
-        "https://typescript-jp.gitbook.io/deep-dive/.*",
-        "https://vim-jp.org/.*",
-        "https://wa3.i-3-i.info/.*",
-        "https://www.ipa.go.jp/security/.*",
-        "https://www.otsuka-shokai.co.jp/words/.*",
-        "https://www.sophia-it.com/.*",
-        "https://www.tohoho-web.com/.*",
-        "https://zenn.dev/.*",
+        "https://e-words.jp/",
+        "https://github.com/",
+        "https://it-trend.jp/words/",
+        "https://ja.stackoverflow.com/",
+        "https://jp.quora.com/",
+        "https://js.studio-kingdom.com/typescript/handbook/",
+        "https://pandoc-doc-ja.readthedocs.io/",
+        "https://qiita.com/",
+        "https://typescript-jp.gitbook.io/deep-dive/",
+        "https://vim-jp.org/",
+        "https://wa3.i-3-i.info/",
+        "https://www.ipa.go.jp/security/",
+        "https://www.otsuka-shokai.co.jp/words/",
+        "https://www.sophia-it.com/",
+        "https://www.tohoho-web.com/",
+        "https://zenn.dev/",
     ]
 
     for line in iter(lines):
@@ -70,7 +69,7 @@ def is_class_x(path: str, class_x_list: list) -> bool:
     あるパスがリストの中のパスとマッチするか調べる。
     """
     for condition in class_x_list:
-        if re.match(condition, path):
+        if condition in path:
             return True
     return False
 
