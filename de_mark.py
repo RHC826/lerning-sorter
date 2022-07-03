@@ -1,25 +1,25 @@
 """
     Markdown のリンクからなるリストをソートする
 """
-import sys
 import re
+import sys
 
 
 def de_mark(txt: str) -> str:
     """
     Markdown のリンクから URL を返す
     """
-    res = re.sub(r"^\[|\)$", "", txt)
-    res = res.split("](")
+    txt = re.sub(r"^\[|\)$", "", txt)
+    res = txt.split("](")
     return res[1]
 
 
-def mark_sort(foo: list) -> list:
+def mark_sort(pre_sort: list) -> list:
     """
     Markdown のリンクからなるリストを URL の順番でソートする
     """
-    bar: list = sorted(foo, key=lambda x: de_mark(x))
-    return bar
+    res: list = sorted(pre_sort, key=de_mark)
+    return res
 
 
 if __name__ == "__main__":
