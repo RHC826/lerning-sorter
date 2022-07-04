@@ -9,6 +9,8 @@ def de_mark(txt: str) -> str:
     """
     Markdown のリンクから URL を返す
     """
+    if txt == "\n":
+        return ""
     txt = re.sub(r"^\[|\)$", "", txt)
     res = txt.split("](")
     return res[1]
